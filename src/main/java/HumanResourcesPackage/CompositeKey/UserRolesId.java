@@ -1,10 +1,11 @@
 package HumanResourcesPackage.CompositeKey;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 import java.util.Objects;
-
+@Embeddable
 public class UserRolesId implements Serializable {
     @Column(name = "user_id")
     private Integer userId;

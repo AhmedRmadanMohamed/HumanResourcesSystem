@@ -33,10 +33,10 @@ public class UsersEntity {
     private List<JobseekersEntity> jobseekers;
     @OneToMany(mappedBy = "usersEntity")
     private List<EmployersEntity> employers;
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "user")
     private List<UserRolesEntity> usersRoles;
     @OneToMany(mappedBy = "user")
-    private List<UserRolesEntity> users;
+    private List<UserRolesEntity> userRolesEntities;
 
 
 }

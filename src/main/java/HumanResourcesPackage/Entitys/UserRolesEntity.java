@@ -17,10 +17,12 @@ public class UserRolesEntity {
     @EmbeddedId
     private UserRolesId id;
     @ManyToOne
-    @JoinColumn(name = "user_id" , referencedColumnName = "id")
+    @MapsId("userId")
+    @JoinColumn(name = "user_id")
     private UsersEntity user;
     @ManyToOne
-    @JoinColumn(name = "role_id" , referencedColumnName = "id")
+    @MapsId("roleId")
+    @JoinColumn(name = "role_id")
     private RolesEntity role;
 
 

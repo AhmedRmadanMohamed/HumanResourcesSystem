@@ -7,6 +7,8 @@ import HumanResourcesPackage.Repositorys.JobPositionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 public class JobPositionService implements JobPositionCRUD {
@@ -15,10 +17,9 @@ public class JobPositionService implements JobPositionCRUD {
     public JobPositionService(JobPositionRepository jobPositionRepository) {
         this.jobPositionRepository = jobPositionRepository;
     }
-
     @Override
     public List<JobPositionDTO> getJobPositions() {
-        return jobPositionRepository.findAll().stream().map(JobPositionMapper::toDTO).toList();
+        return jobPositionRepository.findAll().stream().map(JobPositionMapper::toDTO).collect(Collectors.toList());
     }
 
 

@@ -21,7 +21,7 @@ public class JobPositionEntity {
     @OneToMany(mappedBy = "jobPosition")
     private List<JobsEntity> jobs;
     @OneToMany(mappedBy = "preferredPositionEntity")
-    private List<JobseekersEntity> workplaces;
+    private List<JobseekersEntity> jobseekers;
 
 
 }
