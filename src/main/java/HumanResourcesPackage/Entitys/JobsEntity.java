@@ -29,13 +29,13 @@ public class JobsEntity {
     @Column(name = "is_active")
     private Boolean isActive;
 
-    @Column(name = "deadline")                 // DATETIME في الـ DB
+    @Column(name = "deadline")
     private LocalDateTime Deadline;
 
     @Column(name = "created_at")
     private LocalDateTime CreatedAt;
 
-    // -------- العلاقات (مالك الـ FK على جدول jobs) --------
+
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     private JobPositionEntity jobPosition;
