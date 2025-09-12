@@ -1,6 +1,7 @@
 package HumanResourcesPackage.Services;
 
 import HumanResourcesPackage.DTOs.JobPositionDTO;
+import HumanResourcesPackage.Implementation.Functional.GetAll;
 import HumanResourcesPackage.Implementation.JobPositionCRUD;
 import HumanResourcesPackage.Mappers.JobPositionMapper;
 import HumanResourcesPackage.Repositorys.JobPositionRepository;
@@ -13,11 +14,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class JobPositionService implements JobPositionCRUD {
-    private final JobPositionRepository jobPositionRepository;
+    private  JobPositionRepository jobPositionRepository;
 
     public JobPositionService(JobPositionRepository jobPositionRepository) {
         this.jobPositionRepository = jobPositionRepository;
     }
+
+ public GetAll<JobPositionDTO> GetAllJobPositions = ()->jobPositionRepository.findAll().stream().map(JobPositionMapper::toDTO).collect(Collectors.toList());
+
 
     @Override
     public List<JobPositionDTO> getJobPositions() {

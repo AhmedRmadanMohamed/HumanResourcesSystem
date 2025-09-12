@@ -2,13 +2,13 @@ package HumanResourcesPackage.Controllers;
 
 import HumanResourcesPackage.DTOs.JobPositionDTO;
 import HumanResourcesPackage.Implementation.JobPositionCRUD;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.CREATED;
 
 
 @RestController
@@ -19,6 +19,7 @@ public class JobPositionController {
 
     public JobPositionController(JobPositionCRUD jobPositionCRUD) {
         this.jobPositionCRUD = jobPositionCRUD;
+
     }
 
     @GetMapping("/GetAllPosition")
