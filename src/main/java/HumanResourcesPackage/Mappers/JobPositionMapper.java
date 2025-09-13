@@ -7,12 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Builder
-public class JobPositionMapper {
-    public static JobPositionDTO toDTO(JobPositionEntity jobPosition) {
-        return JobPositionDTO.builder().positionName(jobPosition.getPositionName()).id(jobPosition.getId()).build();
-    }
+public class JobPositionMapper{
+    public  JobPositionDTO toDTO(JobPositionEntity jobPosition) {
+        return JobPositionDTO.builder().positionName(jobPosition.getPositionName()).id(jobPosition.getId()).build();}
 
-    public static JobPositionEntity toEntity(JobPositionDTO jobPositionDTO) {
+    public  JobPositionEntity toEntity(JobPositionDTO jobPositionDTO) {
     return JobPositionEntity.builder().positionName(jobPositionDTO.positionName()).id(jobPositionDTO.id()).build();
     }
 }

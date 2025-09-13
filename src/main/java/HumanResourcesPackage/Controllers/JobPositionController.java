@@ -1,7 +1,8 @@
 package HumanResourcesPackage.Controllers;
 
 import HumanResourcesPackage.DTOs.JobPositionDTO;
-import HumanResourcesPackage.Implementation.JobPositionCRUD;
+import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GenericCRUD;
+import HumanResourcesPackage.Services.ImplementationOfServices.JobPositionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,23 +16,25 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("/JobPosition")
 @CrossOrigin("*")
 public class JobPositionController {
-    private final JobPositionCRUD jobPositionCRUD;
+    private final GenericCRUD GenericCRUD;
 
-    public JobPositionController(JobPositionCRUD jobPositionCRUD) {
-        this.jobPositionCRUD = jobPositionCRUD;
+    private final JobPositionService Jobpositionservice;
 
+    public JobPositionController(GenericCRUD GenericCRUD, JobPositionService jobpositionservice) {
+        this.GenericCRUD = GenericCRUD;
+        Jobpositionservice = jobpositionservice;
     }
 
     @GetMapping("/GetAllPosition")
     public ResponseEntity<?> getAllJobPosition() {
 
-        return new ResponseEntity<>(jobPositionCRUD.getJobPositions(), CREATED);
+        return new ResponseEntity<>(Jobpositionservice.jobPositionImplementationCRUD.getJobPositions(), CREATED);
     }
 
     @PostMapping("/Add")
     public ResponseEntity<List<JobPositionDTO>> addNewJobPosition(@RequestBody List<JobPositionDTO> jobPositions) {
         if (jobPositions == null || jobPositions.isEmpty()) return new ResponseEntity<>(BAD_REQUEST);
-        return new ResponseEntity<>(jobPositionCRUD.AddNewPosition(jobPositions), CREATED);
+        return new ResponseEntity<>(GenericCRUD.AddNewPosition(jobPositions), CREATED);
     }
 
 
