@@ -1,8 +1,8 @@
 package HumanResourcesPackage.Controllers;
 
-import HumanResourcesPackage.DTOs.JobPositionDTO;
-import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GenericCRUD;
-import HumanResourcesPackage.Services.ImplementationOfServices.JobPositionService;
+import HumanResourcesPackage.DTOs.SingleDTOs.JobPositionDTO;
+import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GenericCreate;
+import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GenericRead;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,25 +16,24 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("/JobPosition")
 @CrossOrigin("*")
 public class JobPositionController {
-    private final GenericCRUD GenericCRUD;
+    private final GenericRead<JobPositionDTO> GenericRead;
+    private final GenericCreate<JobPositionDTO> GenericCreate;
 
-    private final JobPositionService Jobpositionservice;
-
-    public JobPositionController(GenericCRUD GenericCRUD, JobPositionService jobpositionservice) {
-        this.GenericCRUD = GenericCRUD;
-        Jobpositionservice = jobpositionservice;
+    public JobPositionController(GenericRead<JobPositionDTO> GenericRead, GenericCreate<JobPositionDTO> genericCreate) {
+        this.GenericRead = GenericRead;
+        GenericCreate = genericCreate;
     }
 
     @GetMapping("/GetAllPosition")
     public ResponseEntity<?> getAllJobPosition() {
 
-        return new ResponseEntity<>(Jobpositionservice.jobPositionImplementationCRUD.getJobPositions(), CREATED);
+        return new ResponseEntity<>(GenericRead.GetAll(), CREATED);
     }
 
     @PostMapping("/Add")
     public ResponseEntity<List<JobPositionDTO>> addNewJobPosition(@RequestBody List<JobPositionDTO> jobPositions) {
         if (jobPositions == null || jobPositions.isEmpty()) return new ResponseEntity<>(BAD_REQUEST);
-        return new ResponseEntity<>(GenericCRUD.AddNewPosition(jobPositions), CREATED);
+        return new ResponseEntity<>(GenericCreate.AddAll(jobPositions), CREATED);
     }
 
 

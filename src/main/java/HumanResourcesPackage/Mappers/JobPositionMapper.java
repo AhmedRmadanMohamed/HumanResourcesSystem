@@ -1,6 +1,6 @@
 package HumanResourcesPackage.Mappers;
 
-import HumanResourcesPackage.DTOs.JobPositionDTO;
+import HumanResourcesPackage.DTOs.SingleDTOs.JobPositionDTO;
 import HumanResourcesPackage.Entitys.JobPositionEntity;
 import lombok.Builder;
 import org.springframework.stereotype.Component;

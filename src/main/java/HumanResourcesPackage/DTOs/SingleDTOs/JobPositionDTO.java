@@ -1,4 +1,4 @@
-package HumanResourcesPackage.DTOs;
+package HumanResourcesPackage.DTOs.SingleDTOs;
 
 import lombok.Builder;
 
