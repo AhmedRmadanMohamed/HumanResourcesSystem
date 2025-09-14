@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class JobsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Lob
     @Column(name = "description", columnDefinition = "TEXT")

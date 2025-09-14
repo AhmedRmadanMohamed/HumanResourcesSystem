@@ -10,7 +10,7 @@ import java.util.List;
 public class EmployersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "company_name")
     private String CompanyName;
