@@ -1,8 +1,8 @@
-package HumanResourcesPackage.Services.BusinessImplementation;
+package HumanResourcesPackage.Services;
 
-import HumanResourcesPackage.DTOs.JobPositionDTO;
+import HumanResourcesPackage.DTOs.SingleDTOs.JobPositionDTO;
 import HumanResourcesPackage.Mappers.JobPositionMapper;
-import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GenericCRUD;
+
 import HumanResourcesPackage.Repositorys.JobPositionRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

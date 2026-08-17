@@ -2,7 +2,7 @@ package HumanResourcesPackage.Controllers;
 
 import HumanResourcesPackage.DTOs.JobPositionDTO;
 import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GenericCRUD;
-import HumanResourcesPackage.Services.ImplementationOfServices.JobPositionService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
