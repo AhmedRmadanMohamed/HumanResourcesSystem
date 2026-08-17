@@ -1,7 +1,6 @@
 package HumanResourcesPackage.Services;
 
 import HumanResourcesPackage.DTOs.JoinsEntitys.UserInformationDTO;
-import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GetAll;
 import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GenericReadBy;
 import HumanResourcesPackage.Repositorys.UsersRepository;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 
 @Service
-public class UsersInformationService implements GetAll<UserInformationDTO>, GenericReadBy<UserInformationDTO , String> {
     private final UsersRepository usersRepository;
 
     UsersInformationService(UsersRepository usersRepository) {
