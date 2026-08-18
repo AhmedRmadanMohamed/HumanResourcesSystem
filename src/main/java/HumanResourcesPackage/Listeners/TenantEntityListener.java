@@ -1,4 +1,4 @@
-package HumanResourcesPackage.Keys;
+package HumanResourcesPackage.Listeners;
 
 import HumanResourcesPackage.Constants.TenantStatus;
 import HumanResourcesPackage.Entitys.TenantEntity;

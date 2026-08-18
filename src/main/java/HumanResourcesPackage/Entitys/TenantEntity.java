@@ -1,7 +1,7 @@
 package HumanResourcesPackage.Entitys;
 
 import HumanResourcesPackage.Constants.TenantStatus;
-import HumanResourcesPackage.Keys.TenantEntityListener;
+import HumanResourcesPackage.Listeners.TenantEntityListener;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,7 +37,7 @@ public class TenantEntity {
     @Enumerated(EnumType.STRING)
     private TenantStatus tenantStatus;
     @CreationTimestamp
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false  ,updatable = false )
     private LocalDateTime createdAt;
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
