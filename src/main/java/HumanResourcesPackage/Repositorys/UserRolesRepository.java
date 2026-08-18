@@ -1,6 +1,6 @@
 package HumanResourcesPackage.Repositorys;
 
-import HumanResourcesPackage.CompositeKey.UserRolesId;
+import HumanResourcesPackage.Keys.UserRolesId;
 import HumanResourcesPackage.Entitys.UserRolesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

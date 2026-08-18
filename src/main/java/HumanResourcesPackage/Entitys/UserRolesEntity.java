@@ -1,6 +1,6 @@
 package HumanResourcesPackage.Entitys;
 
-import HumanResourcesPackage.CompositeKey.UserRolesId;
+import HumanResourcesPackage.Keys.UserRolesId;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

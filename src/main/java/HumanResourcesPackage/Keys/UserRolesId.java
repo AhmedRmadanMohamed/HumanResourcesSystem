@@ -1,4 +1,4 @@
-package HumanResourcesPackage.CompositeKey;
+package HumanResourcesPackage.Keys;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
