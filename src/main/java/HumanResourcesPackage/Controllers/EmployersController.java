@@ -1,33 +1,27 @@
 package HumanResourcesPackage.Controllers;
 
-import HumanResourcesPackage.DTOs.SingleDTOs.JobPositionDTO;
+import HumanResourcesPackage.DTOs.SingleDTOs.EmployersDTO;
 import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GetAll;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.http.HttpStatus.*;
+import java.util.List;
+
+import static org.springframework.http.HttpStatus.OK;
 
 
 @RestController
 public class EmployersController {
+    private final GetAll<EmployersDTO> getAll;
 
-
-    private final GetAll<JobPositionDTO> GetAll;
-
-    public EmployersController(GetAll<JobPositionDTO> getAll) {
-        GetAll = getAll;
+    public EmployersController(GetAll<EmployersDTO> getAll) {
+        this.getAll = getAll;
     }
 
     @GetMapping("/GetAllEmploye")
 
-    public ResponseEntity<?> getEmployers() {
-
-        return new ResponseEntity<>(GetAll.GetAll(), OK);
+    public ResponseEntity<List<EmployersDTO>> getEmployers() {
+        return new ResponseEntity<>(getAll.GetAll(), OK);
     }
-
-
-
-
-
 }

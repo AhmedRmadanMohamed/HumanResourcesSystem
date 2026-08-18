@@ -2,28 +2,30 @@ package HumanResourcesPackage.Services;
 
 import HumanResourcesPackage.DTOs.JoinsEntitys.UserInformationDTO;
 import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GenericReadBy;
+import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GetAll;
 import HumanResourcesPackage.Repositorys.UsersRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 
 @Service
+public class UsersInformationService implements GetAll<UserInformationDTO>,
+        GenericReadBy<UserInformationDTO, String> {
     private final UsersRepository usersRepository;
 
-    UsersInformationService(UsersRepository usersRepository) {
+    public UsersInformationService(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
 
     @Override
     public List<UserInformationDTO> GetAll() {
-        return usersRepository.GetAllUsersInfo().parallelStream().toList();
+        return usersRepository.GetAllUsersInfo();
     }
 
     @Override
-    public CopyOnWriteArrayList<UserInformationDTO> GetBy(String RoleName) {
-        return new CopyOnWriteArrayList<>(usersRepository.GetAllUsersInfoByRole(RoleName));
-
+    public List<UserInformationDTO> GetBy(String roleName) {
+        return usersRepository.GetAllUsersInfoByRole(roleName);
     }
+
 }

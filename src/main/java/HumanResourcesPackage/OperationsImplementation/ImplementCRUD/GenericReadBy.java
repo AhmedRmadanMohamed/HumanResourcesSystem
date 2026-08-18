@@ -1,9 +1,9 @@
 package HumanResourcesPackage.OperationsImplementation.ImplementCRUD;
 
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.List;
 
 
-public interface GenericReadBy<DTO, Kay> {
-    CopyOnWriteArrayList<DTO> GetBy(Kay Value);
+public interface GenericReadBy<DTO, Key> {
+    List<DTO> GetBy(Key value);
 
 }

@@ -1,9 +1,10 @@
 package HumanResourcesPackage.Repositorys;
 
+import HumanResourcesPackage.CompositeKey.UserRolesId;
 import HumanResourcesPackage.Entitys.UserRolesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRolesRepository extends JpaRepository<UserRolesEntity, Integer> {
+public interface UserRolesRepository extends JpaRepository<UserRolesEntity, UserRolesId> {
 }

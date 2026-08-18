@@ -6,8 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -28,7 +27,7 @@ public class UsersEntity {
     @Column(name = "status")
     private Boolean Status;
     @Column(name = "created_date")
-    private Timestamp localDateTime;
+    private LocalDateTime createdDate;
 
     @OneToMany(mappedBy = "usersEntity")
     private List<JobseekersEntity> jobseekers;

@@ -2,13 +2,12 @@ package HumanResourcesPackage.DTOs.JoinsEntitys;
 
 import lombok.Builder;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Builder
 public record UserInformationDTO(String email,
                                  Boolean status,
-                                 String password,
                                  Boolean is_activated,
-                                 Timestamp created_date,
+                                 LocalDateTime created_date,
                                  String role_name) {
 }

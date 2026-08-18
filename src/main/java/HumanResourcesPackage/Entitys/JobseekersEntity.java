@@ -3,7 +3,7 @@ package HumanResourcesPackage.Entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "jobseekers", schema = "humanresources")
@@ -22,9 +22,8 @@ public class JobseekersEntity {
     @Column(name = "last_name")
     private String LastName;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "birth_date")
-    private Date BirthDate;
+    private LocalDate BirthDate;
 
     @Column(name = "nationality_id")
     private Long NationalItyId;
