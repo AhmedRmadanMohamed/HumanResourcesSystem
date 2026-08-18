@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
 @Entity
-@Table(name = "jobpositions", schema = "humanresources")
+@Table(name = "jobpositions")
 @Data
 @AllArgsConstructor
 @Builder

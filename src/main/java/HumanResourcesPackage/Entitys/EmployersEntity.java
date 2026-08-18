@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
-@Table(name = "employers", schema = "humanresources")
+@Table(name = "employers")
 public class EmployersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

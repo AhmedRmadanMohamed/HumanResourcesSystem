@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "cities", schema = "humanresources")
+@Table(name = "cities")
 public class CitiesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

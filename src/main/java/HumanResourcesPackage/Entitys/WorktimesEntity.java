@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "worktimes", schema = "humanresources")
+@Table(name = "worktimes")
 public class WorktimesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

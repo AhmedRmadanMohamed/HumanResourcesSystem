@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-@Table(name = "userroles", schema = "humanresources")
+@Table(name = "userroles")
 public class UserRolesEntity {
     @EmbeddedId
     private UserRolesId id;
