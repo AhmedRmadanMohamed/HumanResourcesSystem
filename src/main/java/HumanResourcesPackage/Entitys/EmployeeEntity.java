@@ -41,7 +41,7 @@ public class EmployeeEntity {
     @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
-    @Column(name = "email", length = 255)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "phone", length = 50)
