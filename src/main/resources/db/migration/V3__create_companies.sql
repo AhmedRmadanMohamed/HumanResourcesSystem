@@ -8,5 +8,8 @@ create table companies
     display_name VARCHAR(150),
     status       VARCHAR(20)  NOT NULL,
     created_at   DATETIME(6)  NOT NULL,
-    updated_at   DATETIME(6)  NOT NULL
+    updated_at   DATETIME(6)  NOT NULL,
+
+    CONSTRAINT uq_company_tenant_code
+        UNIQUE (tenant_id, company_code)
 )
