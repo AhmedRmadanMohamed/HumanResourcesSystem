@@ -13,6 +13,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -47,6 +48,9 @@ public class CompaniesEntity {
     @ManyToOne
     @JoinColumn(name = "tenant_id", nullable = false)
     private TenantEntity tenant;
+
+    @OneToMany(mappedBy = "company")
+    private List<EmployeeEntity> employees;
 }
 
 

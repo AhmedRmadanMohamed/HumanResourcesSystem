@@ -44,4 +44,7 @@ public class TenantEntity {
     private LocalDateTime updatedAt;
     @OneToMany(mappedBy = "tenant")
     private List<CompaniesEntity> companies;
+    @OneToMany(mappedBy = "tenant")
+    private List<EmployeeEntity> employees;
+
 }
