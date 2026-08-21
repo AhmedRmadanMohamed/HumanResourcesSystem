@@ -40,7 +40,7 @@ public class EmploymentsEntity {
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
     @Column(name = "end_date")
-    private LocalDate end_Date;
+    private LocalDate endDate;
     @Enumerated(EnumType.STRING)
     @Column(name = "status" , nullable = false , length = 20)
     private EmploymentsStatus Status;
