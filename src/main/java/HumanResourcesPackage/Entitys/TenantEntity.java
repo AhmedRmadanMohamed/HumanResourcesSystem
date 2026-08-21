@@ -11,6 +11,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.SqlTypes;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -37,7 +38,7 @@ public class TenantEntity {
     @Enumerated(EnumType.STRING)
     private TenantStatus tenantStatus;
     @CreationTimestamp
-    @Column(name = "created_at", nullable = false  ,updatable = false )
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
@@ -46,5 +47,13 @@ public class TenantEntity {
     private List<CompaniesEntity> companies;
     @OneToMany(mappedBy = "tenant")
     private List<EmployeeEntity> employees;
+    @OneToMany(mappedBy = "tenant")
+    private List<DepartmentsEntity> departments;
+    @OneToMany(mappedBy = "tenant")
+    private List<JobPositionsEntity> jobPositions;
+    @OneToMany(mappedBy = "tenant")
+    private List<EmploymentsEntity> employments;
+
+
 
 }

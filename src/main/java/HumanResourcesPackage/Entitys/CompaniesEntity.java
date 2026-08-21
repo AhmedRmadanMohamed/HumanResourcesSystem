@@ -51,6 +51,12 @@ public class CompaniesEntity {
 
     @OneToMany(mappedBy = "company")
     private List<EmployeeEntity> employees;
+    @OneToMany(mappedBy = "company")
+    private List<DepartmentsEntity> departments;
+    @OneToMany(mappedBy = "company")
+    private List<JobPositionsEntity> jobPositions;
+    @OneToMany(mappedBy = "company")
+    private List<EmploymentsEntity> employments;
 }
 
 
