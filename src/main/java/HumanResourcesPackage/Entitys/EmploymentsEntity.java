@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -34,12 +35,12 @@ public class EmploymentsEntity {
     @JoinColumn(name = "department_id", nullable = false)
     private DepartmentsEntity departments;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "job_position_id")
+    @JoinColumn(name = "job_position_id" , nullable = false)
     private JobPositionsEntity jobPositions;
     @Column(name = "start_date", nullable = false)
-    private LocalDateTime startDate;
+    private LocalDate startDate;
     @Column(name = "end_date")
-    private LocalDateTime end_Date;
+    private LocalDate end_Date;
     @Enumerated(EnumType.STRING)
     @Column(name = "status" , nullable = false , length = 20)
     private EmploymentsStatus Status;

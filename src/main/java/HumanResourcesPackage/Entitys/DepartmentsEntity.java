@@ -38,7 +38,7 @@ public class DepartmentsEntity {
     @Column(name = "description", length = 500)
     private String Description;
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", length = 20)
+    @Column(name = "status", length = 20 , nullable = false)
     private DepartmentsStatus Status;
     @CreationTimestamp
     @Column(name = "created_at", nullable = false)
