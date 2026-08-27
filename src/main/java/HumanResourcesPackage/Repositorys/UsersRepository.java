@@ -12,6 +12,11 @@ import java.util.List;
 @Repository
 public interface UsersRepository extends JpaRepository<UsersEntity, Integer> {
 
+    /**
+     * Retrieves user information together with each user's assigned role.
+     *
+     * @return information for all users
+     */
     @Query(
             value = """
                     SELECT
@@ -28,6 +33,12 @@ public interface UsersRepository extends JpaRepository<UsersEntity, Integer> {
     )
     List<UserInformationDTO> GetAllUsersInfo();
 
+    /**
+     * Retrieves user information for users assigned to the specified role.
+     *
+     * @param roleName the role name used to filter users
+     * @return information for users with the specified role
+     */
     @Query(value = """
             SELECT
               A.email        AS email,

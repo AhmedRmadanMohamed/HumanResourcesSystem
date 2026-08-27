@@ -27,6 +27,9 @@ class UsersRepositoryTest {
     @Autowired
     private UsersRepository usersRepository;
 
+    /**
+     * Inserts the user, role, and relationship required by each test.
+     */
     @BeforeEach
     void setUp() {
         jdbcTemplate.update("""
@@ -39,6 +42,9 @@ class UsersRepositoryTest {
         jdbcTemplate.update("INSERT INTO userroles (user_id, role_id) VALUES (?, ?)", 1, 1);
     }
 
+    /**
+     * Verifies that all user information is returned with its assigned role.
+     */
     @Test
     void returnsAllUsersInformation() {
         List<UserInformationDTO> users = usersRepository.GetAllUsersInfo();
@@ -49,6 +55,9 @@ class UsersRepositoryTest {
         });
     }
 
+    /**
+     * Verifies that user information can be filtered by role name.
+     */
     @Test
     void filtersUsersInformationByRole() {
         List<UserInformationDTO> users = usersRepository.GetAllUsersInfoByRole("ADMIN");

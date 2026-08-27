@@ -356,3 +356,6 @@ FROM employees e
                   AND jp.position_code = 'POS001'
 WHERE c.company_code = 'DEMO_C10'
   AND e.employee_code = 'EMP001';
+
+
+

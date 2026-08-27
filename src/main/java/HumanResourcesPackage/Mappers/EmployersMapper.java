@@ -7,10 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmployersMapper {
 
+    /**
+     * Converts an employer entity into its DTO representation.
+     *
+     * @param employersEntity the entity to convert
+     * @return the mapped employer DTO
+     */
     public EmployersDTO mapEmployersDTO(EmployersEntity employersEntity) {
-        Integer userId = employersEntity.getUsersEntity() == null
-                ? null
-                : employersEntity.getUsersEntity().getId();
+        Integer userId = employersEntity.getUsersEntity() == null ? null : employersEntity.getUsersEntity().getId();
 
         return EmployersDTO.builder()
                 .id(employersEntity.getId())

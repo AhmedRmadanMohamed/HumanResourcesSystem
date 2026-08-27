@@ -7,6 +7,9 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest(classes = MainHumanResourceApplication.class)
 @ActiveProfiles("test")
 public class MainHumanResourcesTest {
+    /**
+     * Verifies that the Spring application context starts successfully.
+     */
     @Test
     void contextLoads() {
 

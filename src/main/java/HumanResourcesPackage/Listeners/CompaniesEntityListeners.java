@@ -9,6 +9,11 @@ import java.util.UUID;
 public class CompaniesEntityListeners {
 
 
+    /**
+     * Assigns the default public identifier and status before a company is saved.
+     *
+     * @param companiesEntity the company being created
+     */
     @PrePersist
     public void prePersist(CompaniesEntity companiesEntity) {
 
