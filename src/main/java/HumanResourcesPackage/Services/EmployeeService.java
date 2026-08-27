@@ -9,9 +9,12 @@ import HumanResourcesPackage.Mappers.EmployeeMapper;
 import HumanResourcesPackage.OperationsImplementation.EntitysImp.EmployeeServiceImpl;
 import HumanResourcesPackage.Repositorys.CompanyRepository;
 import HumanResourcesPackage.Repositorys.EmployeeRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
+
 /**
  * Handles employee creation operations.
  */
@@ -39,4 +42,11 @@ public class EmployeeService implements EmployeeServiceImpl {
         employeeEntity.setStatus(EmployeeStatus.ACTIVE);
         return employeeMapper.toResponse(employeeRepository.save(employeeEntity));
     }
+
+    @Override
+    public Optional<EmployeeResponse> GetEmployeeOnCompany(Long employeeId, Long companyId, Long tenantId)
+    {return  employeeRepository.findEmployee(employeeId , companyId , tenantId).map(employeeMapper::toResponse);
+    }
+
+
 }

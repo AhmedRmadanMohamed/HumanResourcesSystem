@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "cities")
 public class CitiesEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "city_name")
     private String CityName;
