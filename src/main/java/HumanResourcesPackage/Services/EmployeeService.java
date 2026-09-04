@@ -9,10 +9,9 @@ import HumanResourcesPackage.Mappers.EmployeeMapper;
 import HumanResourcesPackage.OperationsImplementation.EntitysImp.EmployeeServiceImpl;
 import HumanResourcesPackage.Repositorys.CompanyRepository;
 import HumanResourcesPackage.Repositorys.EmployeeRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 /**
  * Handles employee creation operations.
  */
