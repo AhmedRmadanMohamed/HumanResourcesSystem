@@ -25,6 +25,7 @@ public class JobPositionService implements GetAll<JobPositionDTO>, GenericCreate
      *
      * @return all job positions as DTOs
      */
+
     @Override
     public List<JobPositionDTO> GetAll() {
         return jobPositionRepository.findAll().stream()

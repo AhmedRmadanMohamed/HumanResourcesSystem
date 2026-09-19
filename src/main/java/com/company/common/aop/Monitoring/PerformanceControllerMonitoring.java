@@ -13,13 +13,18 @@ import org.springframework.stereotype.Component;
 @Order(30)
 public class PerformanceControllerMonitoring {
     private static final Logger log = LoggerFactory.getLogger(PerformanceControllerMonitoring.class);
-    @Around("com.company.common.aop.AOPLayers.Layers.controllerLayer()")
+    @Around("com.company.common.aop.AOPLayers.Layers.controllerLayer() &&" +
+            "@annotation(com.company.common.aop.annotation.PerformanceMonitoring)")
     public Object monitorPerformanceController(
             ProceedingJoinPoint joinPoint) throws Throwable {
 
         long startTime = System.nanoTime();
 
         try {
+            log.info(
+                    "AOP HIT | {}",
+                    joinPoint.getSignature().toShortString()
+            );
 
             return joinPoint.proceed();
 
@@ -28,7 +33,7 @@ public class PerformanceControllerMonitoring {
             long executionTime =
                     (System.nanoTime() - startTime) / 1_000_000;
 
-            if (executionTime > 500) {
+            if (executionTime > 0) {
 
                 log.warn(
                         "SLOW CONTROLLER | {} | {} ms",

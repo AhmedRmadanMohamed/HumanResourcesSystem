@@ -1,4 +1,5 @@
 package com.company.common.aop.Monitoring;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -17,7 +18,8 @@ public class PerformanceServiceMonitoring {
     private static final Logger log = LoggerFactory.getLogger(PerformanceServiceMonitoring.class);
 
 
-    @Around("com.company.common.aop.AOPLayers.Layers.serviceLayer()")
+    @Around("com.company.common.aop.AOPLayers.Layers.serviceLayer()&&" +
+            "@annotation(com.company.common.aop.annotation.PerformanceMonitoring)")
     public Object monitorPerformance(
             ProceedingJoinPoint joinPoint) throws Throwable {
 
@@ -31,7 +33,7 @@ public class PerformanceServiceMonitoring {
         if (executionTime > 500) {
 
             log.warn(
-                    "SLOW METHOD | {} | {} ms",
+                    "SLOW Service METHOD | {} | {} ms",
                     joinPoint.getSignature().toShortString(),
                     executionTime
             );

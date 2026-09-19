@@ -2,6 +2,7 @@ package HumanResourcesPackage.OperationsImplementation.EntitysImp;
 
 import HumanResourcesPackage.DTOs.request.CreateEmployeeRequest;
 import HumanResourcesPackage.DTOs.response.EmployeeResponse;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 

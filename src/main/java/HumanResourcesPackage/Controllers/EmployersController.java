@@ -2,6 +2,7 @@ package HumanResourcesPackage.Controllers;
 
 import HumanResourcesPackage.DTOs.SingleDTOs.EmployersDTO;
 import HumanResourcesPackage.OperationsImplementation.ImplementCRUD.GetAll;
+import com.company.common.aop.annotation.PerformanceMonitoring;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,7 @@ public class EmployersController {
      *
      * @return an HTTP 200 response containing all employers
      */
+    @PerformanceMonitoring
     @GetMapping("/GetAllEmploye")
     public ResponseEntity<List<EmployersDTO>> getEmployers() {
         return new ResponseEntity<>(getAll.GetAll(), OK);

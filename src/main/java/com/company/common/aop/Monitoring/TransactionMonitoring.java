@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class TransactionMonitoring {
     private static final Logger log = LoggerFactory.getLogger(TransactionMonitoring.class);
-    @Around("com.company.common.aop.AOPLayers.Layers.transactionalLayer()")
+    @Around("com.company.common.aop.AOPLayers.Layers.transactionalLayer() && "+
+            "@annotation(com.company.common.aop.annotation.MonitorTransactionTrace)")
+
 
     public Object monitorTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
 
