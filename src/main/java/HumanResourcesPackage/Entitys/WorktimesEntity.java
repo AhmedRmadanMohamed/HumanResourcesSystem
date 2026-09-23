@@ -17,11 +17,12 @@ import java.util.List;
 public class WorktimesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name = "name")
-    private String Name;
-    @OneToMany(mappedBy = "worktimes")
+    
+    @Column(name = "name", length = 255)
+    private String name;
+    
+    @OneToMany(mappedBy = "workTime", cascade = CascadeType.ALL)
     private List<JobsEntity> jobs;
-
-
 }

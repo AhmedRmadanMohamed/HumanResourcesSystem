@@ -6,53 +6,56 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "jobs")
 public class JobsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Lob
     @Column(name = "description", columnDefinition = "TEXT")
-    private String Description;
+    private String description;
 
     @Column(name = "min_salary", precision = 10, scale = 2)
-    private BigDecimal Min_Salary;
+    private BigDecimal minSalary;
 
     @Column(name = "max_salary", precision = 10, scale = 2)
-    private BigDecimal MaxSalary;
+    private BigDecimal maxSalary;
 
     @Column(name = "number_of_vacancies")
-    private Integer NumberOfVacancies;
+    private Integer numberOfVacancies;
 
     @Column(name = "is_active")
     private Boolean isActive;
 
     @Column(name = "deadline")
-    private LocalDateTime Deadline;
+    private LocalDateTime deadline;
 
     @Column(name = "created_at")
-    private LocalDateTime CreatedAt;
+    private LocalDateTime createdAt;
 
-
-    @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "position_id")
     private JobPositionEntity jobPosition;
 
-    @ManyToOne
-    @JoinColumn(name = "employer_id", referencedColumnName = "id")
-    private EmployersEntity employers;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employer_id")
+    private EmployersEntity employer;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id", referencedColumnName = "id")
-    private CitiesEntity citiesEntity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private CitiesEntity city;
 
-    @ManyToOne
-    @JoinColumn(name = "work_time_id", referencedColumnName = "id")
-    private WorktimesEntity worktimes;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "work_time_id")
+    private WorktimesEntity workTime;
 
-    @ManyToOne
-    @JoinColumn(name = "workplace_id", referencedColumnName = "id")
-    private WorkplacesEntity workplaces;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "workplace_id")
+    private WorkplacesEntity workplace;
 }

@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class EmployersService implements GetAll<EmployersDTO> {
-    
+
     private final EmployersRepository employersRepository;
     private final EmployersMapper employersMapper;
 

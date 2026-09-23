@@ -14,36 +14,36 @@ import java.time.LocalDate;
 public class JobseekersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "first_name")
-    private String FirstName;
+    @Column(name = "first_name", length = 255)
+    private String firstName;
 
-    @Column(name = "last_name")
-    private String LastName;
+    @Column(name = "last_name", length = 255)
+    private String lastName;
 
     @Column(name = "birth_date")
-    private LocalDate BirthDate;
+    private LocalDate birthDate;
 
     @Column(name = "nationality_id")
-    private Long NationalItyId;
+    private Long nationalityId;
 
-    @Column(name = "github")
-    private String GitHub;
+    @Column(name = "github", length = 255)
+    private String github;
 
-    @Column(name = "linkedin")
-    private String LinkedIn;
+    @Column(name = "linkedin", length = 255)
+    private String linkedin;
 
     @Lob
     @Column(name = "bio", columnDefinition = "TEXT")
-    private String Bio;
+    private String bio;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UsersEntity user;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UsersEntity usersEntity;
-
-    @ManyToOne
-    @JoinColumn(name = "preferred_position_id", referencedColumnName = "id")
-    private JobPositionEntity preferredPositionEntity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "preferred_position_id")
+    private JobPositionEntity preferredPosition;
 }

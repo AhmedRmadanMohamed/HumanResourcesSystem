@@ -27,33 +27,41 @@ public class TenantEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @JdbcTypeCode(SqlTypes.CHAR)
     @Column(name = "public_id", unique = true, nullable = false, length = 36)
     private UUID publicId;
+    
     @Column(name = "tenant_code", unique = true, nullable = false, length = 50)
     private String tenantCode;
+    
     @Column(name = "name", nullable = false, length = 150)
-    private String tenantName;
+    private String name;
+    
     @Column(name = "status", nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
-    private TenantStatus tenantStatus;
+    private TenantStatus status;
+    
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+    
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-    @OneToMany(mappedBy = "tenant")
+    
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
     private List<CompaniesEntity> companies;
-    @OneToMany(mappedBy = "tenant")
+    
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
     private List<EmployeeEntity> employees;
-    @OneToMany(mappedBy = "tenant")
+    
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
     private List<DepartmentsEntity> departments;
-    @OneToMany(mappedBy = "tenant")
+    
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
     private List<JobPositionsEntity> jobPositions;
-    @OneToMany(mappedBy = "tenant")
+    
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
     private List<EmploymentsEntity> employments;
-
-
-
 }

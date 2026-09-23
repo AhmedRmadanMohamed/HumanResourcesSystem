@@ -13,13 +13,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "Roles")
+@Table(name = "roles")
 public class RolesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name = "role_name", unique = true)
-    private String RoleName;
-    @OneToMany(mappedBy = "role")
-    public List<UserRolesEntity> userRolesEntities;
+    
+    @Column(name = "role_name", unique = true, length = 255)
+    private String roleName;
+    
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private List<UserRolesEntity> userRoles;
 }

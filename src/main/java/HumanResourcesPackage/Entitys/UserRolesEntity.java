@@ -16,14 +16,14 @@ import lombok.NoArgsConstructor;
 public class UserRolesEntity {
     @EmbeddedId
     private UserRolesId id;
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("userId")
     @JoinColumn(name = "user_id")
     private UsersEntity user;
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("roleId")
     @JoinColumn(name = "role_id")
     private RolesEntity role;
-
-
 }

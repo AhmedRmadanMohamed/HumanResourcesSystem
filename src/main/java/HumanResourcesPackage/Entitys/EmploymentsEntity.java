@@ -21,33 +21,43 @@ import java.time.LocalDateTime;
 public class EmploymentsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tenant_id", nullable = false)
     private TenantEntity tenant;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = false)
     private EmployeeEntity employee;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = false)
     private CompaniesEntity company;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = false)
-    private DepartmentsEntity departments;
+    private DepartmentsEntity department;
+    
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "job_position_id" , nullable = false)
-    private JobPositionsEntity jobPositions;
+    @JoinColumn(name = "job_position_id", nullable = false)
+    private JobPositionsEntity jobPosition;
+    
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
+    
     @Column(name = "end_date")
     private LocalDate endDate;
+    
     @Enumerated(EnumType.STRING)
-    @Column(name = "status" , nullable = false , length = 20)
-    private EmploymentsStatus Status;
+    @Column(name = "status", nullable = false, length = 20)
+    private EmploymentsStatus status;
+    
     @CreationTimestamp
-    @Column(name = "created_at" , nullable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+    
     @UpdateTimestamp
-    @Column(name = "updated_at" , nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 }

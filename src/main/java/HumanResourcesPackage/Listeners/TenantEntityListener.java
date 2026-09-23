@@ -4,6 +4,7 @@ import HumanResourcesPackage.Constants.TenantStatus;
 import HumanResourcesPackage.Entitys.TenantEntity;
 import jakarta.persistence.PrePersist;
 import java.util.UUID;
+
 public class TenantEntityListener {
     /**
      * Assigns the default public identifier and status before a tenant is saved.
@@ -17,8 +18,8 @@ public class TenantEntityListener {
             tenant.setPublicId(UUID.randomUUID());
         }
 
-        if (tenant.getTenantStatus() == null) {
-            tenant.setTenantStatus(TenantStatus.ACTIVE);
+        if (tenant.getStatus() == null) {
+            tenant.setStatus(TenantStatus.ACTIVE);
         }
     }
 }

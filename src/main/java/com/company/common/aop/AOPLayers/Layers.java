@@ -3,8 +3,10 @@ package com.company.common.aop.AOPLayers;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 @Aspect
+@Component
 public class Layers {
     @Pointcut("execution(* HumanResourcesPackage.Services..*(..))")
     public void serviceLayer() {

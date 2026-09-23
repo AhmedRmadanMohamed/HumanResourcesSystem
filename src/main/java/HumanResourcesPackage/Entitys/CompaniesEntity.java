@@ -17,7 +17,9 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "companies")
+@Table(name = "companies", uniqueConstraints = {
+    @UniqueConstraint(name = "uq_company_tenant_code", columnNames = {"tenant_id", "company_code"})
+})
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -27,36 +29,45 @@ public class CompaniesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @JdbcTypeCode(SqlTypes.CHAR)
     @Column(name = "public_id", length = 36, nullable = false, unique = true)
     private UUID publicId;
+    
     @Column(name = "company_code", length = 50, nullable = false)
     private String companyCode;
+    
     @Column(name = "legal_name", length = 200, nullable = false)
     private String legalName;
+    
     @Column(name = "display_name", length = 150)
     private String displayName;
+    
     @Column(name = "status", length = 20, nullable = false)
     @Enumerated(EnumType.STRING)
     private CompanyStatus status;
-    @Column(name = "created_at", nullable = false)
+    
     @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
-    @Column(name = "updated_at", nullable = false)
+    
     @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tenant_id", nullable = false)
     private TenantEntity tenant;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<EmployeeEntity> employees;
-    @OneToMany(mappedBy = "company")
+    
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<DepartmentsEntity> departments;
-    @OneToMany(mappedBy = "company")
+    
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<JobPositionsEntity> jobPositions;
-    @OneToMany(mappedBy = "company")
+    
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<EmploymentsEntity> employments;
 }
-
-

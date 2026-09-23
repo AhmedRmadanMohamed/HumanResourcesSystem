@@ -2,7 +2,7 @@ package HumanResourcesPackage.OperationsImplementation.EntitysImp;
 
 import HumanResourcesPackage.DTOs.request.CreateEmployeeRequest;
 import HumanResourcesPackage.DTOs.response.EmployeeResponse;
-import org.springframework.stereotype.Service;
+
 
 import java.util.Optional;
 
@@ -19,6 +19,5 @@ public interface EmployeeServiceImpl {
     Optional<EmployeeResponse> GetEmployeeOnCompany(Long employeeId,
                                                     Long companyId,
                                                     Long tenantId);
-
 
 }

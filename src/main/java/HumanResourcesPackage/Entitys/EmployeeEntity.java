@@ -14,7 +14,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "employees", uniqueConstraints = {
+    @UniqueConstraint(name = "uk_employees_company_employee_code", columnNames = {"company_id", "employee_code"})
+})
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -23,6 +25,7 @@ public class EmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tenant_id", nullable = false)
     private TenantEntity tenant;
@@ -30,6 +33,7 @@ public class EmployeeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = false)
     private CompaniesEntity company;
+    
     @Column(name = "employee_code", nullable = false, length = 50)
     private String employeeCode;
 
@@ -42,7 +46,7 @@ public class EmployeeEntity {
     @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", length = 255)
     private String email;
 
     @Column(name = "phone", length = 50)
@@ -54,14 +58,15 @@ public class EmployeeEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 30)
     private EmployeeStatus status;
+    
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+    
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-    @OneToMany(mappedBy = "employee")
+    
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<EmploymentsEntity> employments;
-
-
 }

@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
+
 @Entity
 @Table(name = "jobpositions")
 @Data
@@ -15,13 +16,15 @@ import java.util.List;
 public class JobPositionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name = "position_name")
+    
+    @Column(name = "position_name", length = 255)
     private String positionName;
-    @OneToMany(mappedBy = "jobPosition")
+    
+    @OneToMany(mappedBy = "jobPosition", cascade = CascadeType.ALL)
     private List<JobsEntity> jobs;
-    @OneToMany(mappedBy = "preferredPositionEntity")
+    
+    @OneToMany(mappedBy = "preferredPosition", cascade = CascadeType.ALL)
     private List<JobseekersEntity> jobseekers;
-
-
 }

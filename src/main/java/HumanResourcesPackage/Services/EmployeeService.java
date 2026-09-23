@@ -9,15 +9,13 @@ import HumanResourcesPackage.Mappers.EmployeeMapper;
 import HumanResourcesPackage.OperationsImplementation.EntitysImp.EmployeeServiceImpl;
 import HumanResourcesPackage.Repositorys.CompanyRepository;
 import HumanResourcesPackage.Repositorys.EmployeeRepository;
+import com.company.common.aop.annotation.MonitorTransactionTrace;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-/**
- * Handles employee creation operations.
- */
 @Service
 @RequiredArgsConstructor
 public class EmployeeService implements EmployeeServiceImpl {
@@ -32,6 +30,7 @@ public class EmployeeService implements EmployeeServiceImpl {
      * @return the created employee details
      * @throws java.util.NoSuchElementException if the company is not found for the tenant
      */
+    @MonitorTransactionTrace
     @Transactional
     @Override
     public EmployeeResponse CreateEmployee(CreateEmployeeRequest request) {
@@ -47,6 +46,8 @@ public class EmployeeService implements EmployeeServiceImpl {
     public Optional<EmployeeResponse> GetEmployeeOnCompany(Long employeeId, Long companyId, Long tenantId)
     {return  employeeRepository.findEmployee(employeeId , companyId , tenantId).map(employeeMapper::toResponse);
     }
+
+
 
 
 }

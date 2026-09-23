@@ -14,11 +14,11 @@ public class EmployersMapper {
      * @return the mapped employer DTO
      */
     public EmployersDTO mapEmployersDTO(EmployersEntity employersEntity) {
-        Integer userId = employersEntity.getUsersEntity() == null ? null : employersEntity.getUsersEntity().getId();
+        Integer userId = employersEntity.getUser() == null ? null : employersEntity.getUser().getId();
 
         return EmployersDTO.builder()
                 .id(employersEntity.getId())
-                .phone(employersEntity.getPhone())
+                .phone(employersEntity.getPhoneNumber())
                 .userId(userId)
                 .companyName(employersEntity.getCompanyName())
                 .website(employersEntity.getWebsite())

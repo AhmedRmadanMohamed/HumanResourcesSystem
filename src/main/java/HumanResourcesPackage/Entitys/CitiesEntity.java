@@ -16,9 +16,12 @@ import java.util.List;
 public class CitiesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(name = "city_name")
-    private String CityName;
-    @OneToMany(mappedBy = "citiesEntity")
-    private List<JobsEntity> jobsEntity;
+    
+    @Column(name = "city_name", length = 255)
+    private String cityName;
+    
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    private List<JobsEntity> jobs;
 }
